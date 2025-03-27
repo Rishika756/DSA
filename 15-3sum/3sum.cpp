@@ -5,7 +5,7 @@ public:
         vector<vector<int>> result;
         if (n < 3) return result; 
         sort(arr.begin(), arr.end());
-        for (int i = 0; i < n - 2; i++) {
+        for (int i = 0; i <= n - 2; i++) {
             if (i > 0 && arr[i] == arr[i - 1]) continue;
             int left = i + 1, right = n - 1;
             while (left < right) {
