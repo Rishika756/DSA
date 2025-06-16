@@ -27,7 +27,6 @@ public:
             }
             curr = curr->next; 
         }
-
         return dummy->next;
     }
 };
