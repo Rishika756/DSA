@@ -9,7 +9,7 @@ public:
         for (int i = 0; i < n - 1; i++) {
             left += nums[i];
             int right = ts - left;
-            if ((left % 2) == (right% 2)) {
+            if ((left-right)%2==0) {
                 count++;
             }
         }
