@@ -11,47 +11,53 @@
  */
 class Solution {
 public:
-TreeNode *findlast(TreeNode *root){
-    if(root->right == NULL){
-        return root;
+    TreeNode* findLastRight(TreeNode* node) {
+        if (node->right == NULL) {
+            return node;
+        }
+        return findLastRight(node->right);
     }
-    return findlast(root->right);
-}
-TreeNode* helper(TreeNode *root){
-    if(root->left == NULL){
-        return root->right;
+
+    TreeNode* helper(TreeNode* node) {
+        if (node->left == NULL) {
+            return node->right;
+        }
+        if (node->right == NULL) {
+            return node->left;
+        }
+
+        TreeNode* rightSubtree = node->right;
+        TreeNode* lastRight = findLastRight(node->left);
+        lastRight->right = rightSubtree;
+        return node->left;
     }
-    if(root->right == NULL){
-        return root->left;
-    }
-    TreeNode *rightchild = root->right;
-    TreeNode*lastchild = findlast(root->left);
-    lastchild->right = rightchild;
-    return root->left;
-}
+
     TreeNode* deleteNode(TreeNode* root, int key) {
-        if(!root) return NULL;
-        if(root->val == key){
+        if (root == NULL) return NULL;
+
+        if (root->val == key) {
             return helper(root);
         }
-        TreeNode *dummy = root;
-        while(root != NULL){
-            if(root->val > key){
-                if(root->left != NULL && root->left->val==key){
-                    root->left = helper(root->left);
+
+        TreeNode* curr = root;
+        while (curr != NULL) {
+            if (key < curr->val) {
+                if (curr->left != NULL && curr->left->val == key) {
+                    curr->left = helper(curr->left);
                     break;
-                }else{
-                    root = root->left;
+                } else {
+                    curr = curr->left;
                 }
-            }else{
-                if(root->right != NULL && root->right->val == key){
-                    root->right = helper(root->right);
+            } else {
+                if (curr->right != NULL && curr->right->val == key) {
+                    curr->right = helper(curr->right);
                     break;
-                }else{
-                    root = root->right;
-                }  
+                } else {
+                    curr = curr->right;
+                }
             }
         }
-        return dummy;
+
+        return root;
     }
 };
