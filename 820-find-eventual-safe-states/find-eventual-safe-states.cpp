@@ -36,5 +36,6 @@ public:
         
         sort(safenodes.begin(), safenodes.end());
         return safenodes;
+        
     }
 };
