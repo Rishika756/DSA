@@ -33,5 +33,6 @@ public:
         ListNode* newhead = result->next;
         delete result ; 
         return newhead;
+        
     }
 };
