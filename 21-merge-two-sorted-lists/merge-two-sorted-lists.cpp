@@ -32,5 +32,6 @@ public:
         ListNode* head = dummy->next;
         delete dummy; 
         return head;
+        
     }
 };
