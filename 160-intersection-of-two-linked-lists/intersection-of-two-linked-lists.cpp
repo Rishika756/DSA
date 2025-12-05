@@ -7,23 +7,24 @@
  * };
  */
 class Solution {
-    int getlistlength(ListNode *head){
-        int length = 0;
-        while(head){
-            length++;
-            head = head->next;
-        }
-        return length;
-    }
 public:
+int getlistlength(ListNode* head){
+    int length = 0;
+    while(head){
+        length++;
+        head = head->next;
+    }
+    return length;
+
+}
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         int lena = getlistlength(headA);
         int lenb = getlistlength(headB);
-        while(lena > lenb){
+        while(lena>lenb){
             lena--;
             headA = headA->next;
         }
-        while(lenb > lena){
+         while(lenb > lena){
             lenb--;
             headB = headB->next;
         }
@@ -33,4 +34,5 @@ public:
         }
         return headA;
     }
+    
 };
