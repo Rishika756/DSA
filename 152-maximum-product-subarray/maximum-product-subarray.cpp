@@ -14,7 +14,6 @@ public:
         ans = max(ans , max(leftpro , rightpro));
         }
         return ans ; 
-
     }
 };
 
